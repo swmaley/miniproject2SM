@@ -4,6 +4,8 @@
 
 
 import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
 
 #(5/5 points) Initial comments with your name, class and project at the top of your .py file.
 #(5/5 points) Proper import of packages used.
@@ -18,3 +20,26 @@ import pandas as pd
 #(10/10 points) There should be a minimum of 5 commits on your project, be sure to commit often!
 #(10/10 points) I will be checking out the master branch of your project. Please be sure to include a requirements.txt file which contains all the packages that need installed. You can create this fille with the output of pip freeze at the terminal prompt.
 #(20/20 points) There should be a README.md file in your project that explains what your project is, how to install the pip requirements, and how to execute the program. Please use the GitHub flavor of Markdown. Be thorough on the explanations.
+
+
+
+
+#start of program
+ # create charts folder
+try:
+    Path("charts").mkdir()
+except FileExistsError:
+    pass
+
+#entire file from the database
+raw_data = pd.read_csv("tornados.csv")
+
+#shortened version to make graph more legible
+refined_data = raw_data.sample(n=15)
+
+plt.figure().set_figwidth(20)
+plt.scatter(refined_data["date"], refined_data['len'])
+
+savefile = "charts/Date vs Length.png"
+plt.savefig(savefile)
+plt.show()
