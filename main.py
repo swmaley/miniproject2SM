@@ -37,9 +37,48 @@ raw_data = pd.read_csv("tornados.csv")
 #shortened version to make graph more legible
 refined_data = raw_data.sample(n=15)
 
-plt.figure().set_figwidth(20)
-plt.scatter(refined_data["date"], refined_data['len'])
 
+#Date vs len
+
+#make graph readable
+plt.figure(figsize=(20,10))
+#bar graph
+plt.bar(refined_data["date"], refined_data['len'])
+#labels
+plt.title("Avg Length of Tornado in Miles of 15 Random Tornadoes from 1950-2022")
+plt.xlabel("Date (yyyy/mm/dd)")
+plt.ylabel("Length in miles")
+#saving and showing graph
 savefile = "charts/Date vs Length.png"
+plt.savefig(savefile)
+plt.show()
+
+#Date vs time
+
+#make graph readable
+plt.figure(figsize=(20,10))
+#scatterplot graph
+plt.scatter(refined_data["date"], refined_data["time"])
+#labels
+plt.title("Time of 15 Random Tornadoes from 1950-2022")
+plt.xlabel("Date (yyyy/mm/dd)")
+plt.ylabel("Time (hh/mm/ss)")
+#save and show
+savefile = "charts/Date vs Time.png"
+plt.savefig(savefile)
+plt.show()
+
+#Date vs width
+
+#readable
+plt.figure(figsize=(20,10))
+#bar graph
+plt.bar(refined_data["date"], refined_data['wid'])
+#labels
+plt.title("Avg Width of Tornado in Yards of 15 Random Tornadoes from 1950-2022")
+plt.xlabel("Date (yyyy/mm/dd)")
+plt.ylabel("Length in yards")
+#save and show
+savefile = "charts/Date vs Width.png"
 plt.savefig(savefile)
 plt.show()
